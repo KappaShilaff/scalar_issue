@@ -1,0 +1,52 @@
+openapi: 3.1.0
+info:
+  title: ''
+  description: Crosschain swap API
+  version: ''
+servers:
+- url: http://localhost:9000/v1
+  description: test
+- url: http://localhost:9000/v1
+  description: production
+paths:
+  /payload/issue:
+    post:
+      tags:
+      - issue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueRequest'
+        required: true
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IssueResponse'
+  /swagger.yaml:
+    get:
+      tags:
+      - swagger
+components:
+  schemas:
+    IssueRequest:
+      type: object
+      required:
+      - issueId
+      properties:
+        issueId:
+          examples:
+          - '1337'
+          type: string
+    IssueResponse:
+      type: object
+      required:
+      - issueId
+      properties:
+        issueId:
+          examples:
+          - '1337'
+          type: string
